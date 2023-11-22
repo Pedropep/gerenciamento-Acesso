@@ -18,7 +18,7 @@ public class Acessos {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)    
-    private Integer id;
+    private Long id;
     
     private String tipoAcesso;
     
@@ -35,11 +35,11 @@ public class Acessos {
     public Acessos() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
