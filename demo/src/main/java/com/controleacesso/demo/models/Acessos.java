@@ -1,27 +1,34 @@
 package com.controleacesso.demo.models;
 
 import java.sql.Time;
-import java.text.DateFormat;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Acessos {
     
     @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
     private Integer id;
-
+    
     private String tipoAcesso;
-
+    
     private Time horaAcesso;
 
+    @ManyToOne
+    @JsonIgnoreProperties("acessos")     
+    private Usuarios usuarios;
+
+    @Column(name="data")
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date dataAcesso;
 
@@ -60,5 +67,12 @@ public class Acessos {
         this.dataAcesso = dataAcesso;
     }
 
+    public Usuarios getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
+    }    
     
 }

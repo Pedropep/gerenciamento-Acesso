@@ -1,9 +1,15 @@
 package com.controleacesso.demo.models;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Usuarios {
@@ -18,7 +24,11 @@ public class Usuarios {
 
     private int tipo;
 
-    private String foto;    
+    private String foto;
+    
+    @OneToMany(mappedBy = "usuarios", cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties("usuarios") 
+    private List<Acessos> acessos;
 
     public Usuarios() {
     }
@@ -63,7 +73,11 @@ public class Usuarios {
         this.foto = foto;
     }
 
-    
+    public List<Acessos> getAcessos() {
+        return acessos;
+    }
 
-
+    public void setAcessos(List<Acessos> acessos) {
+        this.acessos = acessos;
+    }
 }
