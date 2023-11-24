@@ -19,7 +19,7 @@ public class Usuarios {
     private Long id;
 
     private String nome;
-
+    
     private String cpf;
 
     private int tipo;

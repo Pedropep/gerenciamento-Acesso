@@ -6,7 +6,6 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,8 +26,7 @@ public class Acessos {
     @ManyToOne
     @JsonIgnoreProperties("acessos")     
     private Usuarios usuarios;
-
-    @Column(name="data")
+   
     @JsonFormat(pattern="dd-MM-yyyy")
     private Date dataAcesso;
 
