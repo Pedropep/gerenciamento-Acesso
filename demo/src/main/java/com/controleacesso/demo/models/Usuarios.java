@@ -25,6 +25,10 @@ public class Usuarios {
     private int tipo;
 
     private String foto;
+
+    private String email;
+
+    private String senha ;
     
     @OneToMany(mappedBy = "usuarios", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("usuarios") 
@@ -80,4 +84,22 @@ public class Usuarios {
     public void setAcessos(List<Acessos> acessos) {
         this.acessos = acessos;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    
 }

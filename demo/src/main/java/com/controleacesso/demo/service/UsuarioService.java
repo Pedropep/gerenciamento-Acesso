@@ -1,7 +1,6 @@
 package com.controleacesso.demo.service;
 
 import java.nio.charset.Charset;
-import java.util.List;
 import java.util.Optional;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -14,36 +13,21 @@ import com.controleacesso.demo.models.Usuarios;
 import com.controleacesso.demo.repository.UsuariosRepository;
 
 @Service
-public class UsuariosService {
+public class UsuarioService {
+    
     @Autowired
-    private UsuariosRepository repository;
+	private UsuariosRepository usuarioRepository;
 
-    public List<Usuarios> buscarTodos(){
-        return repository.findAll();
-    }
-
-    public List<Usuarios> buscarPorNome(String nome){
-        return repository.findByNomeContainingIgnoreCase(nome);
-    }
-
-    public Usuarios criarUsuario(Usuarios usuario){
-        return repository.save(usuario);
-    }
-
-    public void deletarUsuario(Long id){
-        repository.deleteById(id);;
-    }
-
-    public Usuarios cadastrarUsuario(Usuarios usuario) {
+	public Usuarios cadastrarUsuario(Usuarios usuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String senhaEnconder = encoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaEnconder);
-		return repository.save(usuario);
+		return usuarioRepository.save(usuario);
 	}
 
 	public Optional<UsuarioLogin> logar(Optional<UsuarioLogin> user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Optional<Usuarios> usuario = repository.findByEmail(user.get().getEmail());
+		Optional<Usuarios> usuario = usuarioRepository.findByEmail(user.get().getEmail());
 
 		if (usuario.isPresent()) {
 			if (encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
@@ -62,5 +46,5 @@ public class UsuariosService {
 		}
 		return null;
 
-    }
+	}
 }
