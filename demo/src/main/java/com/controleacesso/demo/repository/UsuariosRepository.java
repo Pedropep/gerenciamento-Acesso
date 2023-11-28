@@ -11,7 +11,7 @@ import com.controleacesso.demo.models.Usuarios;
 @Repository
 public interface UsuariosRepository extends JpaRepository<Usuarios, Long>{
     public List<Usuarios>findByNomeContainingIgnoreCase(String nome);
-
-    public Optional<Usuarios> findByEmail(String email); 
+    public Optional<Usuarios> findById(Long id); 
+    public Optional<Usuarios> findByNome(String nome);    
 
 }

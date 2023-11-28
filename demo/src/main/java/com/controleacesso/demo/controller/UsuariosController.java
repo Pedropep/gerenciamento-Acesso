@@ -1,6 +1,7 @@
 package com.controleacesso.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.controleacesso.demo.models.UsuarioLogin;
 import com.controleacesso.demo.models.Usuarios;
 import com.controleacesso.demo.service.UsuariosService;
 
@@ -34,8 +36,15 @@ public class UsuariosController {
 	}
 
     @PostMapping("/cadastrar")
-	public ResponseEntity<Usuarios> criarUsuarios (@Validated @RequestBody Usuarios user){
-		return ResponseEntity.status(HttpStatus.CREATED).body(service.criarUsuario(user));
+	public ResponseEntity<Usuarios> cadastrarUsuario (@Validated @RequestBody Usuarios user){
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrarUsuario(user));
+	}
+    
+    @PostMapping("/logar")
+	public ResponseEntity<UsuarioLogin> Autentication(@RequestBody @Validated Optional<UsuarioLogin> user){
+		return service.logar(user).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+				.build());
 	}
 
     @PutMapping

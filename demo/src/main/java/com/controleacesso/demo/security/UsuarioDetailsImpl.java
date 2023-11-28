@@ -13,9 +13,7 @@ public class UsuarioDetailsImpl implements UserDetails{
 	
 	private String username;
 	
-	private String password;
-	
-	private List<GrantedAuthority> authorities;
+	private String password;	
 	
 	public UsuarioDetailsImpl() {}
 	
@@ -26,7 +24,7 @@ public class UsuarioDetailsImpl implements UserDetails{
 	
 	@Override
 		public Collection<? extends GrantedAuthority> getAuthorities() {
-			return authorities;
+			return null;
 		}
 
 	@Override

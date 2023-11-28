@@ -7,12 +7,14 @@ public class UsuarioLogin {
 	private String nome;
 	
 	private String email;
+	
+	private String cpf;
 
 	private String senha;
 	
 	private String token;
 	
-	private String tipo;
+	private int tipo;
 
 	public Long getId() {
 		return id;
@@ -54,12 +56,25 @@ public class UsuarioLogin {
 		this.token = token;
 	}
 
-	public String getTipo() {
+	public int getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+     
+	
 }

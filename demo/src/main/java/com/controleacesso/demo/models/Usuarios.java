@@ -28,7 +28,7 @@ public class Usuarios {
 
     private String email;
 
-    private String senha ;
+    private String senha;    
     
     @OneToMany(mappedBy = "usuarios", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("usuarios") 
