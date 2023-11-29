@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.controleacesso.demo.models.Acessos;
+import com.controleacesso.demo.models.UserDTO;
+import com.controleacesso.demo.repository.UsuarioProjection;
 import com.controleacesso.demo.service.AcessosService;
 
 @RestController
@@ -31,8 +33,8 @@ public class AcessosController {
         return ResponseEntity.status(HttpStatus.OK).body(service.buscarTudo());
     }
 
-    @GetMapping("/user/{id}")
-	public ResponseEntity<List<Acessos>> findByUser(@PathVariable Long id){
+    @GetMapping("/user/{id}")  
+	public ResponseEntity<List<Acessos>> findByUser(@PathVariable Long id){    	
 		return service.acessosPorUsuarios(id).isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() :
 			ResponseEntity.status(HttpStatus.OK).body(service.acessosPorUsuarios(id));
 	}

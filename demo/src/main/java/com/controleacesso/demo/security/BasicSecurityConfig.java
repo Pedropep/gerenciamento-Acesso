@@ -16,15 +16,13 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
 @Configuration
-public class BasicSecurityConfig{
-	
-	@Autowired
-	private UserDetailsService userDetailsService;	
+public class BasicSecurityConfig{	
 	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
-			.csrf( csrf -> csrf.disable())			
+			.csrf( csrf -> csrf.disable())
+			.httpBasic(httpBasic -> httpBasic.init(http))
 			.sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			.authorizeHttpRequests((requests) -> requests
 				.requestMatchers(HttpMethod.GET, "/api/*").authenticated()
@@ -43,9 +41,5 @@ public class BasicSecurityConfig{
 	public PasswordEncoder passwordEncoder() {
 	    return new BCryptPasswordEncoder();
 	}
-	
-	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-	    return authenticationConfiguration.getAuthenticationManager();
-	}
+
 }

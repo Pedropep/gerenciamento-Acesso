@@ -13,6 +13,6 @@ import com.controleacesso.demo.models.Usuarios;
 public interface AcessosRepository extends JpaRepository<Acessos, Long>{
     public Optional<Acessos> findById(Long id);
 
-    public List<Acessos> findByUsuarios(Usuarios usuarios);
+	public List<Acessos> findByUsuarios(Usuarios usuarios);
 
 }
