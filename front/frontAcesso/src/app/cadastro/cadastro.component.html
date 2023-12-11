@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" id="img-bg">
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 mt-2">
+                    <h1 class="text-center">Cadastro</h1>
+
+                    <div class="form-group mt-2">
+                        <label for="nome">
+                            Nome:
+                        </label>
+                        <input class="form-control" name="nome" id="nome" placeholder="Seu nome" type="text">
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="usuario">
+                            CPF:
+                        </label>
+                        <input class="form-control" name="cpf" id="cpf" placeholder="Seu CPF" type="text">
+                    </div>                    
+                    <div class="form-group mt-2">
+                        <label for="usuario">
+                            Email:
+                        </label>
+                        <input class="form-control" name="email" id="email" placeholder="Seu email" type="email">
+                    </div>                    
+
+                    <div class="form-group mt-2">
+                        <label for="link-foto">
+                            Link da sua foto:
+                        </label>
+                        <input class="form-control mt-2" name="foto" id="foto" placeholder="Sua Foto" type="text">
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="senha">
+                            Senha:
+                        </label>
+                        <input class="form-control" name="senha" id="senha" placeholder="Sua Senha" type="password">
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="confirmar-senha">
+                            Confirmar Senha:
+                        </label>
+                        <input class="form-control" name="confirmar-senha" id="confirmar-senha"
+                            placeholder="Confirme sua Senha" type="password">
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="tipo">
+                            Tipo de Usuário:
+                        </label>
+                        <select class="form-control mt-2" name="tipo" id="tipo">
+                            <option>Selecione o tipo de Usuário</option>
+                            <option value="normal">Normal</option>
+                            <option value="amd">Administrador</option>
+                        </select>
+                    </div>
+
+                    <div class="mt-4 d-flex justify-content-evenly">                       
+                        <button class="btn btn-danger" type="submit" routerLink=''>Cancelar</button>
+                        <button class=" btn btn-success" type="submit">Cadastrar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
