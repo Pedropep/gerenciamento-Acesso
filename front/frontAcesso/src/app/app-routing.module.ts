@@ -6,7 +6,7 @@ import { PainelComponent } from './painel/painel.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: 'painel', pathMatch: 'full'},
+  {path:'', redirectTo: 'login', pathMatch: 'full'},
 
   {path:'registro', component:RegistroComponent},
   {path:'painel', component:PainelComponent},
