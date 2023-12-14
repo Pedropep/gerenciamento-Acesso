@@ -1,10 +1,10 @@
 import { Acessos } from "./Acessos"
 
 export class Usuarios{
-    public id: number
+    public id: Number
     public nome: String
     public cpf: String
-    public tipo: number
+    public tipo: Number
     public foto: String
     public email: String
     public senha: String
