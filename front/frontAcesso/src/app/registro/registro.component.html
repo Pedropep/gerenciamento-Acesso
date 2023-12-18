@@ -1,21 +1,21 @@
 <div class="container text-center">
     <div class="row ">    
       <div class="col-md-6 mt-2 border border-success rounded">
-        <div class="card" style="width: 80%">
+        <div class="card" style="width: 80%">          
             <img src="../../assets/img/logo/domila180.png" style="width: 180px;" class="card-img-top mx-auto d-block" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Pedro Estevão Pires</h5>
-              <p class="card-text">titulo</p>
+              <h5 class="card-title form-group">Pedro Estevão Pires</h5>
+              <p class="card-text form-group">titulo</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">000000000-00</li>
-              <li class="list-group-item">email</li>
+              <li class="list-group-item form-group">000000000-00</li>
+              <li class="list-group-item form-group">email</li>
               
             </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Entrada</a>
-              <a href="#" class="card-link">Saida</a>
-              <a href="#" class="card-link">Cancelar</a>
+            <div class="card-body d-flex justify-content-evenly">
+              <button class="btn btn-primary" (click)="registrar()">Entrada</button>
+              <button class="btn btn-info" (click)="registrar()">Saida</button>
+              <button class="btn btn-danger" routerLink="/painel">Cancelar</button>              
             </div>
           </div>
         </div>    

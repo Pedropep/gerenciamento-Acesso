@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsuarioLogin } from '../model/UsuarioLogin';
 import { Usuarios } from '../model/Usuarios';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,20 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  entrar(usuarioLogin: UsuarioLogin): Observable<UsuarioLogin>{
-    // let httpHeadersOptions = {
-    //   headers : new HttpHeaders({
-    //     'Access-Control-Allow-Origin':'*',
-    //     'Access-Control-Allow-Method': 'POST, GET, PUT, DELETE',
-    //     'Access-Control-Allow-Headers':'*'
-    //   })
-    // }
+  entrar(usuarioLogin: UsuarioLogin): Observable<UsuarioLogin>{   
     return this.http.post<UsuarioLogin>('http://localhost:8080/api/user/logar', usuarioLogin)
   }
 
   cadastrar(usuarios: Usuarios): Observable<Usuarios>{
     return this.http.post<Usuarios>('http://localhost:8080/api/user/cadastrar', usuarios)
   }
+
+  logado(){
+    let ok: boolean = false
+    
+    if(environment.token != ''){
+      ok = true
+    }
+    return ok
+  }  
 }
