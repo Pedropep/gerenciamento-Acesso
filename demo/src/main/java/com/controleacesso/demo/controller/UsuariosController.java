@@ -23,7 +23,7 @@ import com.controleacesso.demo.service.UsuariosService;
 
 @RestController
 @RequestMapping("/api/user")
-@CrossOrigin(allowedHeaders = "*", origins = "*")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuariosController {
     
     @Autowired
@@ -34,6 +34,12 @@ public class UsuariosController {
 		return service.buscarTodos().size() == 0 ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() : 
 			ResponseEntity.status(HttpStatus.OK).body(service.buscarTodos());
 	}
+    
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<Optional<Usuarios>> buscarCpf(@PathVariable String cpf){
+    	return service.buscarCpf(cpf).isEmpty() ? ResponseEntity.status(HttpStatus.NO_CONTENT).build() : 
+    		ResponseEntity.status(HttpStatus.OK).body(service.buscarCpf(cpf));
+    }
 
     @PostMapping("/cadastrar")
 	public ResponseEntity<Usuarios> cadastrarUsuario (@Validated @RequestBody Usuarios user){

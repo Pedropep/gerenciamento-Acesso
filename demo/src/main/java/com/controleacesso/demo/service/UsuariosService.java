@@ -21,6 +21,10 @@ public class UsuariosService {
     public List<Usuarios> buscarTodos(){
         return repository.findAll();
     }
+    
+    public Optional<Usuarios> buscarCpf(String cpf){
+    	return repository.findByCpf(cpf);
+    }
 
     public List<Usuarios> buscarPorNome(String nome){
         return repository.findByNomeContainingIgnoreCase(nome);

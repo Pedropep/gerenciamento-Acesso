@@ -25,13 +25,39 @@ export class RegistroComponent implements OnInit{
       alert('Sua seção expirou, faça o login novamente.')
       this.router.navigate(['/login'])
     }
+
+    this.buscaCpf()
   }
 
-  registrar(){
+  buscaCpf(cpf:string = environment.cpfUser){
+    this.service.buscarPorCpf(cpf).subscribe((resp: Usuarios) =>{
+      this.usuario = resp
+    })
+    console.log(this.usuario)    
+  }
+
+  btnEntrada(){
+    this.acesso.tipoAcesso = 'ENTRADA'
     this.service.registrarAcesso(this.acesso).subscribe((resp: Acessos) =>{
       this.acesso = resp
       alert("Acesso registrado")
+      environment.cpfUser = ''
       this.router.navigate(['/painel'])
     })
+  }
+
+  btnSaida(){
+    this.acesso.tipoAcesso = 'SAIDA'
+    this.service.registrarAcesso(this.acesso).subscribe((resp: Acessos) =>{      
+      this.acesso = resp
+      alert("Acesso registrado")
+      environment.cpfUser = ''
+      this.router.navigate(['/painel'])
+    })
+  }
+
+  btnCancelar(){
+    environment.cpfUser = ''
+    this.router.navigate(['/painel'])
   }
 }

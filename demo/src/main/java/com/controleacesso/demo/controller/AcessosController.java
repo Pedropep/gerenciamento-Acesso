@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.controleacesso.demo.models.Acessos;
-import com.controleacesso.demo.models.UserDTO;
-import com.controleacesso.demo.repository.UsuarioProjection;
 import com.controleacesso.demo.service.AcessosService;
 
 @RestController
