@@ -19,10 +19,10 @@ import { LoginComponent } from './login/login.component';
     LoginComponent        
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,        
   ],
   providers: [],
   bootstrap: [AppComponent]

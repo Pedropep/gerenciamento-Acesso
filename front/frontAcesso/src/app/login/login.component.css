@@ -7,3 +7,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.bg-border{
+    background-color:#407bff;
+}
+
+.bg-geral{
+    background-color: aliceblue;
+}

@@ -5,6 +5,6 @@ export class Acessos{
     public id: number
     public tipoAcesso: String
     public horaAcesso: Time
-    public usuarios: Usuarios
     public dataAcesso: Date    
+    public usuarios: Usuarios
 }

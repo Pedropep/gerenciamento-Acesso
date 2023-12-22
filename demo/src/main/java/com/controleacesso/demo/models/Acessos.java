@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 public class Acessos {
@@ -21,14 +23,15 @@ public class Acessos {
     
     private String tipoAcesso;
     
-    private Time horaAcesso;
+    @Temporal(TemporalType.TIME)
+    private Time horaAcesso = new Time(System.currentTimeMillis());
 
     @ManyToOne
     @JsonIgnoreProperties("acessos")     
     private Usuarios usuarios;
    
-    @JsonFormat(pattern="dd-MM-yyyy")
-    private Date dataAcesso;
+    @JsonFormat(pattern="dd-MM-yyyy") @Temporal(TemporalType.DATE)
+    private Date dataAcesso = new Date(System.currentTimeMillis());
 
     public Acessos() {
     }

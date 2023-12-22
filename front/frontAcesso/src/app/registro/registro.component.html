@@ -1,25 +1,46 @@
 <div class="container text-center">
-    <div class="row ">    
-      <div class="col-md-6 mt-2 border border-success rounded">
-        <div class="card" style="width: 80%">          
+    <div class="row d-flex justify-content-evenly"> 
+      
+      <div class="col-md-5 mt-2 border border-success rounded">
+        <div class="card p-2 mt-2">          
             <img src="../../assets/img/logo/domila180.png" style="width: 180px;" class="card-img-top mx-auto d-block" alt="...">
             <div class="card-body">
-              <h5 [(ngModel)]="usuario.nome" class="card-title form-group">{{usuario.nome}}</h5>
-              <p class="card-text form-group">titulo</p>
+              <h5 class="card-title fs-32">{{usuario.nome}}</h5>
+              <p class="card-text fs-24">titulo</p>
+              <ul class="list-group form-group text-centerlist-group-flush">
+                <li class="list-group-item">{{usuario.cpf}}</li>
+                <li class="list-group-item">{{usuario.email}}</li>              
+              </ul>            
             </div>
-            <ul class="list-group list-group-flush">
-              <li [(ngModel)]="usuario.cpf" class="list-group-item form-group">{{usuario.cpf}}</li>
-              <li [(ngModel)]="usuario.email" class="list-group-item form-group">{{usuario.email}}</li>
-              <li [(ngModel)]="usuario.id" class="list-group-item form-group" style="display: none;"></li>
-              
-            </ul>
             <div class="card-body d-flex justify-content-evenly">
-              <button class="btn btn-primary" (click)="btnEntrada()">Entrada</button>
+              <button class="btn btn-primary form-group" (click)="btnEntrada()">Entrada</button>
               <button class="btn btn-info" (click)="btnSaida()">Saida</button>
               <button class="btn btn-danger" routerLink="/painel">Cancelar</button>              
             </div>
-          </div>
-        </div>    
+        </div>
+      </div>
+
+      <div class="col-md-5 mt-2 border border-success rounded">
+        <h2 class="mt-2">Ultimos Acessos do {{usuario.nome}}</h2>
+        <table class="table">
+          <thead>
+            <tr>            
+              <th scope="col">Nome</th>
+              <th scope="col">E/S</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let acesso of listaAcessoUser">            
+              <td class="text-uppercase">{{acesso.usuarios.nome}}</td>
+              <td class="text-uppercase">{{acesso.tipoAcesso}}</td>
+              <td class="text-uppercase">{{acesso.horaAcesso}}</td>
+              <td class="text-uppercase">{{acesso.dataAcesso}}</td>
+            </tr>         
+          </tbody>
+        </table>
+      </div>    
     </div>
   </div>
   

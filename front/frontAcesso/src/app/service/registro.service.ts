@@ -25,4 +25,9 @@ export class RegistroService {
   buscarPorCpf(cpf: String): Observable<Usuarios>{
     return this.http.get<Usuarios>(`http://localhost:8080/api/user/cpf/${cpf}`, this.token)
   }
+
+  buscarAcessoPorUser(id: number): Observable<Acessos[]>{
+    return this.http.get<Acessos[]>(`http://localhost:8080/api/acesso/user/${id}`, this.token)
+
+  }
 }
